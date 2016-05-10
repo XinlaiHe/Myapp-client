@@ -1,8 +1,8 @@
 <GridLayout rows="auto, *">
 
   <GridLayout row="0" columns="*, auto" class="add-bar">
-    <TextField #groceryTextField hint="Enter a grocery item" col="0" [(ngModel)="newItem"]></TextField>
-    <Image src="res://add" col="1" (tap)='createNew()'></Image>
+    <TextField  hint="Enter a grocery item" col="0" [(ngModel)]="newItem"></TextField>
+    <Image src="res://add" col="1" (tap)="createNew()"></Image>
   </GridLayout>
 
   <ListView [items]="groceryList" row="1" class="small-spacing">

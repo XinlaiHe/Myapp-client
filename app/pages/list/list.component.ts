@@ -12,7 +12,7 @@ export class ListPage implements OnInit {
 
   groceryList: Array<Grocery> = [];
   errorMessage: Object;
-  newItem: string;
+  newItem: string = '';
 
   constructor(private _listService: ListService){
 
@@ -35,6 +35,13 @@ export class ListPage implements OnInit {
            );
   }
   createNew() {
-    alert(this.newItem);
+    if (this.newItem != '') {
+      this._listService.createNew(this.newItem)
+        .subscribe(
+            item => { this.groceryList.push(item) },
+            (error) => { console.log(error) }
+          )
+    }
+    else alert("Empty Input");
   }
 }

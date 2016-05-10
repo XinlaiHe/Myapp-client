@@ -56,6 +56,8 @@ export class LoginPage implements OnInit {
       );
   }
   ngOnInit() {
+    this.user.email = 'hexinlai1991@gmail.com';
+    this.user.password = '1991923';
     this.page.actionBarHidden = true;
     this.page.backgroundImage = this.page.ios ? "res://bg_login.jpg" : "res://bg_login";
   }
