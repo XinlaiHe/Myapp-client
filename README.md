@@ -1,0 +1,1 @@
+This branch contains the starting point for the [NativeScript & Angular 2 Getting Started Guide](https://tjvantoll.github.io/nativescript-angular-guide/). If you're looking for the completed state of the getting started guide, refer to [this repo's “angular-end” branch](https://github.com/NativeScript/sample-Groceries/tree/angular-end).#Myapp-client
