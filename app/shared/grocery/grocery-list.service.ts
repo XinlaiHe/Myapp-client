@@ -5,7 +5,9 @@ import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import {Grocery} from "./grocery";
 
-
+let url = "http://10.22.72.57:3000/list";
+let headers = new Headers({ "Content-Type": "application/json" });
+let options = new RequestOptions({ headers: headers });
 
 @Injectable()
 export class ListService {
@@ -14,10 +16,9 @@ export class ListService {
 
    }
    getList(): Promise<Grocery[]> {
-     let headers = new Headers({ "Content-Type": "application/json" });
-     let options = new RequestOptions({ headers: headers });
+
      return this._http.get(
-       "http://10.22.73.106:3000/list",
+       url,
        headers
      )
        .toPromise()
@@ -25,12 +26,11 @@ export class ListService {
        .catch(this.handleError);
    }
    createNew(name: string) {
-     let headers = new Headers({ "Content-Type": "application/json" });
-     let options = new RequestOptions({ headers: headers });
+
       return this._http.post(
-        "http://10.22.73.106:3000/list",
+        url,
         JSON.stringify({ name: name }),
-         options
+        options
         )
         .map(res => res.json())
         .map(data => {
@@ -39,6 +39,14 @@ export class ListService {
           return item;
         })
         .catch(this.handleErrors);
+   }
+   delete(item: Grocery) {
+     return this._http.delete(url + '/' +  item.name, options)
+       .map(res => res.json())
+       .map(data => {
+         return data;
+       })
+       .catch(this.handleErrors);
    }
    private extractData(res: Response) {
      if (res.status < 200 || res.status >= 300) {

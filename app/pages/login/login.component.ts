@@ -24,6 +24,10 @@ export class LoginPage implements OnInit {
     this.user = new User();
   }
   submit() {
+    if (!this.user.isValidEmail()) {
+      alert("Enter a valid email address.");
+      return;
+    }
     if (this.isLoggedIn) {
       this.login();
     } else {
